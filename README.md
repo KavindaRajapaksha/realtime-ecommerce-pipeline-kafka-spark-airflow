@@ -13,7 +13,7 @@ Producer (5 events/sec) → Kafka (3 partitions) → Spark Streaming → Parquet
                            [Bronze Layer]         [Transformation]   [Silver Layer]
 ```
 
-## 🚀 Quick Start
+
 
 ## 🚀 Quick Start
 
@@ -46,7 +46,7 @@ http://localhost:4040
 docker exec spark-master ls -R /tmp/silver_layer/
 ```
 
-## 📊 Data Flow
+
 
 ## 📊 Data Flow
 
