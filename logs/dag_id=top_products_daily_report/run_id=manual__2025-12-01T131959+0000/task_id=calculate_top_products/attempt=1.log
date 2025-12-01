@@ -1,0 +1,54 @@
+[2025-12-01T13:20:02.527+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: top_products_daily_report.calculate_top_products manual__2025-12-01T13:19:59+00:00 [queued]>
+[2025-12-01T13:20:02.541+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: top_products_daily_report.calculate_top_products manual__2025-12-01T13:19:59+00:00 [queued]>
+[2025-12-01T13:20:02.542+0000] {taskinstance.py:2193} INFO - Starting attempt 1 of 2
+[2025-12-01T13:20:02.563+0000] {taskinstance.py:2217} INFO - Executing <Task(PythonOperator): calculate_top_products> on 2025-12-01 13:19:59+00:00
+[2025-12-01T13:20:02.573+0000] {standard_task_runner.py:60} INFO - Started process 1746 to run task
+[2025-12-01T13:20:02.578+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'top_products_daily_report', 'calculate_top_products', 'manual__2025-12-01T13:19:59+00:00', '--job-id', '59', '--raw', '--subdir', 'DAGS_FOLDER/top_products_daily_dag.py', '--cfg-path', '/tmp/tmpd9jbr39t']
+[2025-12-01T13:20:02.581+0000] {standard_task_runner.py:88} INFO - Job 59: Subtask calculate_top_products
+[2025-12-01T13:20:02.658+0000] {task_command.py:423} INFO - Running <TaskInstance: top_products_daily_report.calculate_top_products manual__2025-12-01T13:19:59+00:00 [running]> on host d4a7043b2403
+[2025-12-01T13:20:02.772+0000] {taskinstance.py:2513} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='top_products_daily_report' AIRFLOW_CTX_TASK_ID='calculate_top_products' AIRFLOW_CTX_EXECUTION_DATE='2025-12-01T13:19:59+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-01T13:19:59+00:00'
+[2025-12-01T13:20:02.774+0000] {logging_mixin.py:188} INFO - ================================================================================
+[2025-12-01T13:20:02.775+0000] {logging_mixin.py:188} INFO - 🔢 TASK 2: Calculating Top 5 Products
+[2025-12-01T13:20:02.776+0000] {logging_mixin.py:188} INFO - ================================================================================
+[2025-12-01T13:20:02.835+0000] {logging_mixin.py:188} INFO - 
+✅ Top 5 Most Viewed Products:
+[2025-12-01T13:20:02.836+0000] {logging_mixin.py:188} INFO - ================================================================================
+[2025-12-01T13:20:02.840+0000] {logging_mixin.py:188} INFO - #1 prod_0042
+[2025-12-01T13:20:02.841+0000] {logging_mixin.py:188} INFO -    Category: Home & Garden
+[2025-12-01T13:20:02.841+0000] {logging_mixin.py:188} INFO -    Total Views: 423
+[2025-12-01T13:20:02.842+0000] {logging_mixin.py:188} INFO -    Unique Viewers: 284
+[2025-12-01T13:20:02.843+0000] {logging_mixin.py:188} INFO -    Avg Price: $506.29
+[2025-12-01T13:20:02.844+0000] {logging_mixin.py:188} INFO -    View Repeat Rate: 1.49x
+[2025-12-01T13:20:02.845+0000] {logging_mixin.py:188} INFO - --------------------------------------------------------------------------------
+[2025-12-01T13:20:02.846+0000] {logging_mixin.py:188} INFO - #2 prod_0009
+[2025-12-01T13:20:02.846+0000] {logging_mixin.py:188} INFO -    Category: Sports
+[2025-12-01T13:20:02.847+0000] {logging_mixin.py:188} INFO -    Total Views: 26
+[2025-12-01T13:20:02.848+0000] {logging_mixin.py:188} INFO -    Unique Viewers: 26
+[2025-12-01T13:20:02.848+0000] {logging_mixin.py:188} INFO -    Avg Price: $495.6
+[2025-12-01T13:20:02.849+0000] {logging_mixin.py:188} INFO -    View Repeat Rate: 1.00x
+[2025-12-01T13:20:02.850+0000] {logging_mixin.py:188} INFO - --------------------------------------------------------------------------------
+[2025-12-01T13:20:02.850+0000] {logging_mixin.py:188} INFO - #3 prod_0008
+[2025-12-01T13:20:02.851+0000] {logging_mixin.py:188} INFO -    Category: Books
+[2025-12-01T13:20:02.852+0000] {logging_mixin.py:188} INFO -    Total Views: 24
+[2025-12-01T13:20:02.852+0000] {logging_mixin.py:188} INFO -    Unique Viewers: 24
+[2025-12-01T13:20:02.853+0000] {logging_mixin.py:188} INFO -    Avg Price: $565.19
+[2025-12-01T13:20:02.854+0000] {logging_mixin.py:188} INFO -    View Repeat Rate: 1.00x
+[2025-12-01T13:20:02.854+0000] {logging_mixin.py:188} INFO - --------------------------------------------------------------------------------
+[2025-12-01T13:20:02.855+0000] {logging_mixin.py:188} INFO - #4 prod_0056
+[2025-12-01T13:20:02.856+0000] {logging_mixin.py:188} INFO -    Category: Electronics
+[2025-12-01T13:20:02.857+0000] {logging_mixin.py:188} INFO -    Total Views: 24
+[2025-12-01T13:20:02.857+0000] {logging_mixin.py:188} INFO -    Unique Viewers: 24
+[2025-12-01T13:20:02.858+0000] {logging_mixin.py:188} INFO -    Avg Price: $512.55
+[2025-12-01T13:20:02.859+0000] {logging_mixin.py:188} INFO -    View Repeat Rate: 1.00x
+[2025-12-01T13:20:02.860+0000] {logging_mixin.py:188} INFO - --------------------------------------------------------------------------------
+[2025-12-01T13:20:02.861+0000] {logging_mixin.py:188} INFO - #5 prod_0016
+[2025-12-01T13:20:02.862+0000] {logging_mixin.py:188} INFO -    Category: Sports
+[2025-12-01T13:20:02.863+0000] {logging_mixin.py:188} INFO -    Total Views: 23
+[2025-12-01T13:20:02.864+0000] {logging_mixin.py:188} INFO -    Unique Viewers: 23
+[2025-12-01T13:20:02.865+0000] {logging_mixin.py:188} INFO -    Avg Price: $493.33
+[2025-12-01T13:20:02.865+0000] {logging_mixin.py:188} INFO -    View Repeat Rate: 1.00x
+[2025-12-01T13:20:02.866+0000] {logging_mixin.py:188} INFO - --------------------------------------------------------------------------------
+[2025-12-01T13:20:02.887+0000] {python.py:202} INFO - Done. Returned value was: [{'product_id': 'prod_0042', 'total_views': 423, 'category': 'Home & Garden', 'avg_price': 506.29, 'unique_viewers': 284, 'rank': 1}, {'product_id': 'prod_0009', 'total_views': 26, 'category': 'Sports', 'avg_price': 495.6, 'unique_viewers': 26, 'rank': 2}, {'product_id': 'prod_0008', 'total_views': 24, 'category': 'Books', 'avg_price': 565.19, 'unique_viewers': 24, 'rank': 3}, {'product_id': 'prod_0056', 'total_views': 24, 'category': 'Electronics', 'avg_price': 512.55, 'unique_viewers': 24, 'rank': 4}, {'product_id': 'prod_0016', 'total_views': 23, 'category': 'Sports', 'avg_price': 493.33, 'unique_viewers': 23, 'rank': 5}]
+[2025-12-01T13:20:02.912+0000] {taskinstance.py:1149} INFO - Marking task as SUCCESS. dag_id=top_products_daily_report, task_id=calculate_top_products, execution_date=20251201T131959, start_date=20251201T132002, end_date=20251201T132002
+[2025-12-01T13:20:02.952+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-12-01T13:20:02.979+0000] {taskinstance.py:3312} INFO - 2 downstream tasks scheduled from follow-on schedule check

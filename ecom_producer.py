@@ -7,7 +7,7 @@ from kafka.errors import KafkaError
 
 # Kafka config
 KAFKA_BOOTSTRAP_SERVERS = ['localhost:9092']
-KAFKA_TOPIC = 'ecom_clickstream_raw'
+KAFKA_TOPIC = 'ecom_clickstream_data'
 
 # Sample data
 USER_IDS = [f"user_{i:04d}" for i in range(1, 501)]
@@ -76,16 +76,24 @@ def send_event(producer, event):
     except KafkaError as e:
         print(f"Failed to send event: {e}")
 
-def produce_stream(duration_seconds=60, events_per_second=5):
+def produce_stream(duration_seconds=None, events_per_second=5):
     producer = create_producer()
     event_number = 1
     start_time = time.time()
 
     print("\nStarting event production...")
+    if duration_seconds:
+        print(f"Running for {duration_seconds} seconds...")
+    else:
+        print("Running continuously (Press Ctrl+C to stop)...")
     print("=" * 60)
 
     try:
-        while time.time() - start_time < duration_seconds:
+        while True:
+            # Check if we should stop based on duration
+            if duration_seconds and (time.time() - start_time >= duration_seconds):
+                break
+                
             for _ in range(events_per_second):
                 event = generate_event(event_number)
                 send_event(producer, event)
@@ -94,12 +102,16 @@ def produce_stream(duration_seconds=60, events_per_second=5):
             time.sleep(1)
 
     except KeyboardInterrupt:
-        print("Producer interrupted.")
+        print("\n⚠️  Producer interrupted by user.")
 
     finally:
         producer.flush()
         producer.close()
-        print(f"\nProducer closed. Total events sent: {event_number - 1}")
+        elapsed = time.time() - start_time
+        print(f"\n✅ Producer closed. Total events sent: {event_number - 1}")
+        print(f"⏱️  Duration: {elapsed:.1f} seconds")
 
 if __name__ == "__main__":
-    produce_stream(duration_seconds=60, events_per_second=5)
+    # Run continuously (no duration limit)
+    # To run for specific duration: produce_stream(duration_seconds=60, events_per_second=5)
+    produce_stream(events_per_second=5)

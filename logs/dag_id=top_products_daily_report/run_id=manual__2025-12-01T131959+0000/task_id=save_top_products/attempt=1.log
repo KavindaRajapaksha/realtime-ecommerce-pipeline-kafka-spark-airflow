@@ -1,0 +1,22 @@
+[2025-12-01T13:20:03.664+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: top_products_daily_report.save_top_products manual__2025-12-01T13:19:59+00:00 [queued]>
+[2025-12-01T13:20:03.676+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: top_products_daily_report.save_top_products manual__2025-12-01T13:19:59+00:00 [queued]>
+[2025-12-01T13:20:03.676+0000] {taskinstance.py:2193} INFO - Starting attempt 1 of 2
+[2025-12-01T13:20:03.695+0000] {taskinstance.py:2217} INFO - Executing <Task(PythonOperator): save_top_products> on 2025-12-01 13:19:59+00:00
+[2025-12-01T13:20:03.705+0000] {standard_task_runner.py:60} INFO - Started process 1751 to run task
+[2025-12-01T13:20:03.712+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'top_products_daily_report', 'save_top_products', 'manual__2025-12-01T13:19:59+00:00', '--job-id', '60', '--raw', '--subdir', 'DAGS_FOLDER/top_products_daily_dag.py', '--cfg-path', '/tmp/tmpdrbcm4sx']
+[2025-12-01T13:20:03.717+0000] {standard_task_runner.py:88} INFO - Job 60: Subtask save_top_products
+[2025-12-01T13:20:03.811+0000] {task_command.py:423} INFO - Running <TaskInstance: top_products_daily_report.save_top_products manual__2025-12-01T13:19:59+00:00 [running]> on host d4a7043b2403
+[2025-12-01T13:20:03.940+0000] {taskinstance.py:2513} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='top_products_daily_report' AIRFLOW_CTX_TASK_ID='save_top_products' AIRFLOW_CTX_EXECUTION_DATE='2025-12-01T13:19:59+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-01T13:19:59+00:00'
+[2025-12-01T13:20:03.943+0000] {logging_mixin.py:188} INFO - ================================================================================
+[2025-12-01T13:20:03.944+0000] {logging_mixin.py:188} INFO - 💾 TASK 3: Saving Top Products to Database
+[2025-12-01T13:20:03.945+0000] {logging_mixin.py:188} INFO - ================================================================================
+[2025-12-01T13:20:04.034+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.8/site-packages/***/utils/context.py:315 AirflowContextDeprecationWarning: Accessing 'execution_date' from the template is deprecated and will be removed in a future version. Please use 'data_interval_start' or 'logical_date' instead.
+[2025-12-01T13:20:04.035+0000] {logging_mixin.py:188} INFO - 
+💾 Saving top 5 products to database...
+[2025-12-01T13:20:04.036+0000] {logging_mixin.py:188} INFO - 📅 Analysis Date: 2025-12-01
+[2025-12-01T13:20:04.037+0000] {logging_mixin.py:188} INFO - 
+✅ Would insert 5 rows into 'top_products_daily'
+[2025-12-01T13:20:04.038+0000] {python.py:202} INFO - Done. Returned value was: Top products saved successfully
+[2025-12-01T13:20:04.080+0000] {taskinstance.py:1149} INFO - Marking task as SUCCESS. dag_id=top_products_daily_report, task_id=save_top_products, execution_date=20251201T131959, start_date=20251201T132003, end_date=20251201T132004
+[2025-12-01T13:20:04.126+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-12-01T13:20:04.158+0000] {taskinstance.py:3312} INFO - 0 downstream tasks scheduled from follow-on schedule check

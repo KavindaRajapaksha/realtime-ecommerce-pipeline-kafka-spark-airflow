@@ -1,0 +1,31 @@
+[2025-12-01T13:20:10.237+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: conversion_rate_analytics.save_conversion_analytics manual__2025-12-01T13:20:04+00:00 [queued]>
+[2025-12-01T13:20:10.249+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: conversion_rate_analytics.save_conversion_analytics manual__2025-12-01T13:20:04+00:00 [queued]>
+[2025-12-01T13:20:10.249+0000] {taskinstance.py:2193} INFO - Starting attempt 1 of 2
+[2025-12-01T13:20:10.268+0000] {taskinstance.py:2217} INFO - Executing <Task(PythonOperator): save_conversion_analytics> on 2025-12-01 13:20:04+00:00
+[2025-12-01T13:20:10.276+0000] {standard_task_runner.py:60} INFO - Started process 1783 to run task
+[2025-12-01T13:20:10.282+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'conversion_rate_analytics', 'save_conversion_analytics', 'manual__2025-12-01T13:20:04+00:00', '--job-id', '65', '--raw', '--subdir', 'DAGS_FOLDER/conversion_rate_analytics_dag.py', '--cfg-path', '/tmp/tmp7v0ynzhv']
+[2025-12-01T13:20:10.286+0000] {standard_task_runner.py:88} INFO - Job 65: Subtask save_conversion_analytics
+[2025-12-01T13:20:10.369+0000] {task_command.py:423} INFO - Running <TaskInstance: conversion_rate_analytics.save_conversion_analytics manual__2025-12-01T13:20:04+00:00 [running]> on host d4a7043b2403
+[2025-12-01T13:20:10.475+0000] {taskinstance.py:2513} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='conversion_rate_analytics' AIRFLOW_CTX_TASK_ID='save_conversion_analytics' AIRFLOW_CTX_EXECUTION_DATE='2025-12-01T13:20:04+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-01T13:20:04+00:00'
+[2025-12-01T13:20:10.477+0000] {logging_mixin.py:188} INFO - ================================================================================
+[2025-12-01T13:20:10.478+0000] {logging_mixin.py:188} INFO - 💾 TASK 3: Saving Conversion Analytics
+[2025-12-01T13:20:10.479+0000] {logging_mixin.py:188} INFO - ================================================================================
+[2025-12-01T13:20:10.551+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.8/site-packages/***/utils/context.py:315 AirflowContextDeprecationWarning: Accessing 'execution_date' from the template is deprecated and will be removed in a future version. Please use 'data_interval_start' or 'logical_date' instead.
+[2025-12-01T13:20:10.552+0000] {logging_mixin.py:188} INFO - 
+💾 Saving conversion analytics to database...
+[2025-12-01T13:20:10.553+0000] {logging_mixin.py:188} INFO - 📅 Analysis Date: 2025-12-01
+[2025-12-01T13:20:10.554+0000] {logging_mixin.py:188} INFO - 
+✅ Would insert 5 category records
+[2025-12-01T13:20:10.555+0000] {logging_mixin.py:188} INFO - 
+📊 Overall Summary:
+[2025-12-01T13:20:10.556+0000] {logging_mixin.py:188} INFO -    overall_views: 2244
+[2025-12-01T13:20:10.557+0000] {logging_mixin.py:188} INFO -    overall_purchases: 254
+[2025-12-01T13:20:10.557+0000] {logging_mixin.py:188} INFO -    overall_conversion_rate: 11.32
+[2025-12-01T13:20:10.558+0000] {logging_mixin.py:188} INFO -    best_category: Books
+[2025-12-01T13:20:10.559+0000] {logging_mixin.py:188} INFO -    best_category_rate: 17.89
+[2025-12-01T13:20:10.560+0000] {logging_mixin.py:188} INFO -    worst_category: Electronics
+[2025-12-01T13:20:10.560+0000] {logging_mixin.py:188} INFO -    worst_category_rate: 4.78
+[2025-12-01T13:20:10.561+0000] {python.py:202} INFO - Done. Returned value was: Conversion analytics saved successfully
+[2025-12-01T13:20:10.594+0000] {taskinstance.py:1149} INFO - Marking task as SUCCESS. dag_id=conversion_rate_analytics, task_id=save_conversion_analytics, execution_date=20251201T132004, start_date=20251201T132010, end_date=20251201T132010
+[2025-12-01T13:20:10.655+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-12-01T13:20:10.676+0000] {taskinstance.py:3312} INFO - 0 downstream tasks scheduled from follow-on schedule check

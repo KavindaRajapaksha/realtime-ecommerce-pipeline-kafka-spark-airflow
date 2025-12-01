@@ -1,0 +1,38 @@
+[2025-12-01T13:17:38.918+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: daily_user_segmentation.segment_users manual__2025-12-01T13:17:34.880749+00:00 [queued]>
+[2025-12-01T13:17:38.931+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: daily_user_segmentation.segment_users manual__2025-12-01T13:17:34.880749+00:00 [queued]>
+[2025-12-01T13:17:38.932+0000] {taskinstance.py:2193} INFO - Starting attempt 1 of 2
+[2025-12-01T13:17:38.952+0000] {taskinstance.py:2217} INFO - Executing <Task(PythonOperator): segment_users> on 2025-12-01 13:17:34.880749+00:00
+[2025-12-01T13:17:38.962+0000] {standard_task_runner.py:60} INFO - Started process 1528 to run task
+[2025-12-01T13:17:38.967+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'daily_user_segmentation', 'segment_users', 'manual__2025-12-01T13:17:34.880749+00:00', '--job-id', '47', '--raw', '--subdir', 'DAGS_FOLDER/daily_user_segmentation_dag.py', '--cfg-path', '/tmp/tmpnzv6hkaa']
+[2025-12-01T13:17:38.970+0000] {standard_task_runner.py:88} INFO - Job 47: Subtask segment_users
+[2025-12-01T13:17:39.123+0000] {task_command.py:423} INFO - Running <TaskInstance: daily_user_segmentation.segment_users manual__2025-12-01T13:17:34.880749+00:00 [running]> on host d4a7043b2403
+[2025-12-01T13:17:39.437+0000] {taskinstance.py:2513} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='daily_user_segmentation' AIRFLOW_CTX_TASK_ID='segment_users' AIRFLOW_CTX_EXECUTION_DATE='2025-12-01T13:17:34.880749+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-01T13:17:34.880749+00:00'
+[2025-12-01T13:17:39.444+0000] {logging_mixin.py:188} INFO - ================================================================================
+[2025-12-01T13:17:39.446+0000] {logging_mixin.py:188} INFO - 🔍 TASK 2: Segmenting Users
+[2025-12-01T13:17:39.448+0000] {logging_mixin.py:188} INFO - ================================================================================
+[2025-12-01T13:17:39.555+0000] {logging_mixin.py:188} INFO - 
+✅ Segmented 100 users
+[2025-12-01T13:17:39.556+0000] {logging_mixin.py:188} INFO - 
+Segmentation Results:
+[2025-12-01T13:17:39.562+0000] {logging_mixin.py:188} INFO - segment
+Buyer             67
+Window Shopper    33
+Name: count, dtype: int64
+[2025-12-01T13:17:39.563+0000] {logging_mixin.py:188} INFO - 
+📊 Sample Segments:
+[2025-12-01T13:17:39.573+0000] {logging_mixin.py:188} INFO -      user_id         segment  total_events  view_count  cart_count  purchase_count
+0  user_0001           Buyer            11           6           1               4
+1  user_0002           Buyer             9           6           2               1
+2  user_0003           Buyer            13           8           3               2
+3  user_0004           Buyer             7           6           0               1
+4  user_0005           Buyer             9           6           2               1
+5  user_0006           Buyer             8           6           1               1
+6  user_0007  Window Shopper             4           4           0               0
+7  user_0008           Buyer             7           5           1               1
+8  user_0009           Buyer             8           5           1               2
+9  user_0010  Window Shopper             7           6           1               0
+[2025-12-01T13:17:39.638+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.8/site-packages/***/utils/context.py:315 AirflowContextDeprecationWarning: Accessing 'execution_date' from the template is deprecated and will be removed in a future version. Please use 'data_interval_start' or 'logical_date' instead.
+[2025-12-01T13:17:39.666+0000] {python.py:202} INFO - Done. Returned value was: {'total_users': 100, 'buyers': 67, 'window_shoppers': 33, 'buyer_percentage': 67.0, 'execution_date': '2025-12-01T13:17:34.880749+00:00'}
+[2025-12-01T13:17:39.712+0000] {taskinstance.py:1149} INFO - Marking task as SUCCESS. dag_id=daily_user_segmentation, task_id=segment_users, execution_date=20251201T131734, start_date=20251201T131738, end_date=20251201T131739
+[2025-12-01T13:17:39.784+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-12-01T13:17:39.835+0000] {taskinstance.py:3312} INFO - 2 downstream tasks scheduled from follow-on schedule check

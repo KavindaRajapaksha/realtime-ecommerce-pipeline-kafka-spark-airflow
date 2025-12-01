@@ -1,0 +1,31 @@
+[2025-12-01T13:17:32.222+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: conversion_rate_analytics.save_conversion_analytics manual__2025-12-01T13:17:25.997988+00:00 [queued]>
+[2025-12-01T13:17:32.237+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: conversion_rate_analytics.save_conversion_analytics manual__2025-12-01T13:17:25.997988+00:00 [queued]>
+[2025-12-01T13:17:32.238+0000] {taskinstance.py:2193} INFO - Starting attempt 1 of 2
+[2025-12-01T13:17:32.269+0000] {taskinstance.py:2217} INFO - Executing <Task(PythonOperator): save_conversion_analytics> on 2025-12-01 13:17:25.997988+00:00
+[2025-12-01T13:17:32.286+0000] {standard_task_runner.py:60} INFO - Started process 1513 to run task
+[2025-12-01T13:17:32.308+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'conversion_rate_analytics', 'save_conversion_analytics', 'manual__2025-12-01T13:17:25.997988+00:00', '--job-id', '45', '--raw', '--subdir', 'DAGS_FOLDER/conversion_rate_analytics_dag.py', '--cfg-path', '/tmp/tmpvx97c9bx']
+[2025-12-01T13:17:32.321+0000] {standard_task_runner.py:88} INFO - Job 45: Subtask save_conversion_analytics
+[2025-12-01T13:17:32.588+0000] {task_command.py:423} INFO - Running <TaskInstance: conversion_rate_analytics.save_conversion_analytics manual__2025-12-01T13:17:25.997988+00:00 [running]> on host d4a7043b2403
+[2025-12-01T13:17:32.789+0000] {taskinstance.py:2513} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='conversion_rate_analytics' AIRFLOW_CTX_TASK_ID='save_conversion_analytics' AIRFLOW_CTX_EXECUTION_DATE='2025-12-01T13:17:25.997988+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-01T13:17:25.997988+00:00'
+[2025-12-01T13:17:32.797+0000] {logging_mixin.py:188} INFO - ================================================================================
+[2025-12-01T13:17:32.802+0000] {logging_mixin.py:188} INFO - 💾 TASK 3: Saving Conversion Analytics
+[2025-12-01T13:17:32.804+0000] {logging_mixin.py:188} INFO - ================================================================================
+[2025-12-01T13:17:33.046+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.8/site-packages/***/utils/context.py:315 AirflowContextDeprecationWarning: Accessing 'execution_date' from the template is deprecated and will be removed in a future version. Please use 'data_interval_start' or 'logical_date' instead.
+[2025-12-01T13:17:33.048+0000] {logging_mixin.py:188} INFO - 
+💾 Saving conversion analytics to database...
+[2025-12-01T13:17:33.049+0000] {logging_mixin.py:188} INFO - 📅 Analysis Date: 2025-12-01
+[2025-12-01T13:17:33.051+0000] {logging_mixin.py:188} INFO - 
+✅ Would insert 5 category records
+[2025-12-01T13:17:33.052+0000] {logging_mixin.py:188} INFO - 
+📊 Overall Summary:
+[2025-12-01T13:17:33.053+0000] {logging_mixin.py:188} INFO -    overall_views: 2256
+[2025-12-01T13:17:33.054+0000] {logging_mixin.py:188} INFO -    overall_purchases: 255
+[2025-12-01T13:17:33.055+0000] {logging_mixin.py:188} INFO -    overall_conversion_rate: 11.3
+[2025-12-01T13:17:33.056+0000] {logging_mixin.py:188} INFO -    best_category: Sports
+[2025-12-01T13:17:33.057+0000] {logging_mixin.py:188} INFO -    best_category_rate: 18.7
+[2025-12-01T13:17:33.058+0000] {logging_mixin.py:188} INFO -    worst_category: Electronics
+[2025-12-01T13:17:33.058+0000] {logging_mixin.py:188} INFO -    worst_category_rate: 7.21
+[2025-12-01T13:17:33.059+0000] {python.py:202} INFO - Done. Returned value was: Conversion analytics saved successfully
+[2025-12-01T13:17:33.103+0000] {taskinstance.py:1149} INFO - Marking task as SUCCESS. dag_id=conversion_rate_analytics, task_id=save_conversion_analytics, execution_date=20251201T131725, start_date=20251201T131732, end_date=20251201T131733
+[2025-12-01T13:17:33.165+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-12-01T13:17:33.186+0000] {taskinstance.py:3312} INFO - 0 downstream tasks scheduled from follow-on schedule check
