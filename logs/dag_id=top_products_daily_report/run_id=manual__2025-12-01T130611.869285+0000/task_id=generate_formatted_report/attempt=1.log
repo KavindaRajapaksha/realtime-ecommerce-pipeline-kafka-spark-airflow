@@ -1,0 +1,98 @@
+[2025-12-01T13:06:17.929+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: top_products_daily_report.generate_formatted_report manual__2025-12-01T13:06:11.869285+00:00 [queued]>
+[2025-12-01T13:06:17.949+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: top_products_daily_report.generate_formatted_report manual__2025-12-01T13:06:11.869285+00:00 [queued]>
+[2025-12-01T13:06:17.950+0000] {taskinstance.py:2193} INFO - Starting attempt 1 of 2
+[2025-12-01T13:06:17.982+0000] {taskinstance.py:2217} INFO - Executing <Task(PythonOperator): generate_formatted_report> on 2025-12-01 13:06:11.869285+00:00
+[2025-12-01T13:06:17.998+0000] {standard_task_runner.py:60} INFO - Started process 1054 to run task
+[2025-12-01T13:06:18.006+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'top_products_daily_report', 'generate_formatted_report', 'manual__2025-12-01T13:06:11.869285+00:00', '--job-id', '36', '--raw', '--subdir', 'DAGS_FOLDER/top_products_daily_dag.py', '--cfg-path', '/tmp/tmpf3ubu_v5']
+[2025-12-01T13:06:18.012+0000] {standard_task_runner.py:88} INFO - Job 36: Subtask generate_formatted_report
+[2025-12-01T13:06:18.173+0000] {task_command.py:423} INFO - Running <TaskInstance: top_products_daily_report.generate_formatted_report manual__2025-12-01T13:06:11.869285+00:00 [running]> on host d4a7043b2403
+[2025-12-01T13:06:18.383+0000] {taskinstance.py:2513} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='top_products_daily_report' AIRFLOW_CTX_TASK_ID='generate_formatted_report' AIRFLOW_CTX_EXECUTION_DATE='2025-12-01T13:06:11.869285+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-01T13:06:11.869285+00:00'
+[2025-12-01T13:06:18.386+0000] {logging_mixin.py:188} INFO - ================================================================================
+[2025-12-01T13:06:18.387+0000] {logging_mixin.py:188} INFO - 📧 TASK 4: Generating Formatted Report
+[2025-12-01T13:06:18.388+0000] {logging_mixin.py:188} INFO - ================================================================================
+[2025-12-01T13:06:18.433+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.8/site-packages/***/utils/context.py:315 AirflowContextDeprecationWarning: Accessing 'execution_date' from the template is deprecated and will be removed in a future version. Please use 'data_interval_start' or 'logical_date' instead.
+[2025-12-01T13:06:18.453+0000] {logging_mixin.py:188} INFO - 
+================================================================================
+🏆 TOP 5 MOST VIEWED PRODUCTS - DAILY REPORT
+================================================================================
+
+Analysis Date: 2025-12-01
+Generated: 2025-12-01 13:06:18
+
+================================================================================
+TOP 5 PRODUCTS
+================================================================================
+
+
+#1 - prod_0042
+--------------------------------------------------------------------------------
+📦 Category:         Sports
+👀 Total Views:      427
+👥 Unique Viewers:   292
+💰 Average Price:    $515.98
+🔁 Repeat Views:     1.46x per viewer
+
+
+#2 - prod_0078
+--------------------------------------------------------------------------------
+📦 Category:         Electronics
+👀 Total Views:      28
+👥 Unique Viewers:   27
+💰 Average Price:    $460.19
+🔁 Repeat Views:     1.04x per viewer
+
+
+#3 - prod_0065
+--------------------------------------------------------------------------------
+📦 Category:         Sports
+👀 Total Views:      25
+👥 Unique Viewers:   22
+💰 Average Price:    $533.06
+🔁 Repeat Views:     1.14x per viewer
+
+
+#4 - prod_0071
+--------------------------------------------------------------------------------
+📦 Category:         Electronics
+👀 Total Views:      25
+👥 Unique Viewers:   24
+💰 Average Price:    $595.37
+🔁 Repeat Views:     1.04x per viewer
+
+
+#5 - prod_0002
+--------------------------------------------------------------------------------
+📦 Category:         Clothing
+👀 Total Views:      23
+👥 Unique Viewers:   23
+💰 Average Price:    $503.07
+🔁 Repeat Views:     1.00x per viewer
+
+
+================================================================================
+KEY INSIGHTS
+================================================================================
+
+🥇 Most Popular:     prod_0042 (427 views)
+💎 Highest Value:    prod_0071 ($595.37)
+📊 Total Views:      528
+👥 Total Viewers:    388
+
+================================================================================
+RECOMMENDATIONS
+================================================================================
+
+1. ✅ Feature these products on homepage
+2. 💡 Ensure sufficient inventory for high-demand items
+3. 📧 Send targeted marketing for top products
+4. 🎯 Consider flash sales to convert high views to purchases
+
+================================================================================
+        
+[2025-12-01T13:06:18.455+0000] {logging_mixin.py:188} INFO - 
+✅ Report generated successfully
+[2025-12-01T13:06:18.457+0000] {logging_mixin.py:188} INFO - 📁 Report would be saved to: /tmp/top_products_report_20251201.txt
+[2025-12-01T13:06:18.458+0000] {python.py:202} INFO - Done. Returned value was: Report generated successfully
+[2025-12-01T13:06:18.512+0000] {taskinstance.py:1149} INFO - Marking task as SUCCESS. dag_id=top_products_daily_report, task_id=generate_formatted_report, execution_date=20251201T130611, start_date=20251201T130617, end_date=20251201T130618
+[2025-12-01T13:06:18.582+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-12-01T13:06:18.617+0000] {taskinstance.py:3312} INFO - 0 downstream tasks scheduled from follow-on schedule check

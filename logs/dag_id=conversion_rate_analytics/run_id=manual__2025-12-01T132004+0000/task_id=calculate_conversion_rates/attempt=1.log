@@ -1,0 +1,48 @@
+[2025-12-01T13:20:08.108+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: conversion_rate_analytics.calculate_conversion_rates manual__2025-12-01T13:20:04+00:00 [queued]>
+[2025-12-01T13:20:08.133+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: conversion_rate_analytics.calculate_conversion_rates manual__2025-12-01T13:20:04+00:00 [queued]>
+[2025-12-01T13:20:08.135+0000] {taskinstance.py:2193} INFO - Starting attempt 1 of 2
+[2025-12-01T13:20:08.169+0000] {taskinstance.py:2217} INFO - Executing <Task(PythonOperator): calculate_conversion_rates> on 2025-12-01 13:20:04+00:00
+[2025-12-01T13:20:08.184+0000] {standard_task_runner.py:60} INFO - Started process 1777 to run task
+[2025-12-01T13:20:08.192+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'conversion_rate_analytics', 'calculate_conversion_rates', 'manual__2025-12-01T13:20:04+00:00', '--job-id', '63', '--raw', '--subdir', 'DAGS_FOLDER/conversion_rate_analytics_dag.py', '--cfg-path', '/tmp/tmpx37pkx_z']
+[2025-12-01T13:20:08.198+0000] {standard_task_runner.py:88} INFO - Job 63: Subtask calculate_conversion_rates
+[2025-12-01T13:20:08.343+0000] {task_command.py:423} INFO - Running <TaskInstance: conversion_rate_analytics.calculate_conversion_rates manual__2025-12-01T13:20:04+00:00 [running]> on host d4a7043b2403
+[2025-12-01T13:20:08.462+0000] {taskinstance.py:2513} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='conversion_rate_analytics' AIRFLOW_CTX_TASK_ID='calculate_conversion_rates' AIRFLOW_CTX_EXECUTION_DATE='2025-12-01T13:20:04+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-01T13:20:04+00:00'
+[2025-12-01T13:20:08.464+0000] {logging_mixin.py:188} INFO - ================================================================================
+[2025-12-01T13:20:08.465+0000] {logging_mixin.py:188} INFO - 📊 TASK 2: Calculating Conversion Rates
+[2025-12-01T13:20:08.466+0000] {logging_mixin.py:188} INFO - ================================================================================
+[2025-12-01T13:20:08.513+0000] {logging_mixin.py:188} INFO - 
+================================================================================
+[2025-12-01T13:20:08.514+0000] {logging_mixin.py:188} INFO - 📊 CATEGORY-LEVEL CONVERSION RATES
+[2025-12-01T13:20:08.515+0000] {logging_mixin.py:188} INFO - ================================================================================
+[2025-12-01T13:20:08.531+0000] {logging_mixin.py:188} INFO - 
+✅ Conversion Rates by Category:
+[2025-12-01T13:20:08.537+0000] {logging_mixin.py:188} INFO - event_type product_category  add_to_cart  purchase  view  total_events  conversion_rate  cart_rate  purchase_from_cart_rate
+0                     Books           71        39   218           328            17.89      32.57                    54.93
+1                  Clothing          118        77   460           655            16.74      25.65                    65.25
+3             Home & Garden          104        56   364           524            15.38      28.57                    53.85
+4                    Sports           87        37   261           385            14.18      33.33                    42.53
+2               Electronics          122        45   941          1108             4.78      12.96                    36.89
+[2025-12-01T13:20:08.538+0000] {logging_mixin.py:188} INFO - 
+================================================================================
+[2025-12-01T13:20:08.539+0000] {logging_mixin.py:188} INFO - 📊 PRODUCT-LEVEL CONVERSION RATES
+[2025-12-01T13:20:08.540+0000] {logging_mixin.py:188} INFO - ================================================================================
+[2025-12-01T13:20:08.552+0000] {logging_mixin.py:188} INFO - 
+🏆 Top 5 Products by Conversion Rate:
+[2025-12-01T13:20:08.556+0000] {logging_mixin.py:188} INFO - event_type product_id product_category  view  purchase  conversion_rate
+76          prod_0077            Books    11         6            54.55
+46          prod_0047         Clothing    15         7            46.67
+77          prod_0078         Clothing    13         6            46.15
+78          prod_0079         Clothing    11         5            45.45
+36          prod_0037           Sports    15         6            40.00
+[2025-12-01T13:20:08.557+0000] {logging_mixin.py:188} INFO - 
+⚠️  Bottom 5 Products by Conversion Rate:
+[2025-12-01T13:20:08.562+0000] {logging_mixin.py:188} INFO - event_type product_id product_category  view  purchase  conversion_rate
+9           prod_0010         Clothing    23         0              0.0
+12          prod_0013      Electronics    13         0              0.0
+31          prod_0032      Electronics    22         0              0.0
+43          prod_0044      Electronics    20         0              0.0
+45          prod_0046           Sports    17         0              0.0
+[2025-12-01T13:20:08.639+0000] {python.py:202} INFO - Done. Returned value was: {'overall_views': 2244, 'overall_purchases': 254, 'overall_conversion_rate': 11.32, 'best_category': 'Books', 'best_category_rate': 17.89, 'worst_category': 'Electronics', 'worst_category_rate': 4.78}
+[2025-12-01T13:20:08.670+0000] {taskinstance.py:1149} INFO - Marking task as SUCCESS. dag_id=conversion_rate_analytics, task_id=calculate_conversion_rates, execution_date=20251201T132004, start_date=20251201T132008, end_date=20251201T132008
+[2025-12-01T13:20:08.727+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-12-01T13:20:08.761+0000] {taskinstance.py:3312} INFO - 2 downstream tasks scheduled from follow-on schedule check

@@ -1,0 +1,54 @@
+[2025-12-01T13:05:55.904+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: daily_user_segmentation.generate_email_report manual__2025-12-01T12:54:55+00:00 [queued]>
+[2025-12-01T13:05:55.919+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: daily_user_segmentation.generate_email_report manual__2025-12-01T12:54:55+00:00 [queued]>
+[2025-12-01T13:05:55.920+0000] {taskinstance.py:2193} INFO - Starting attempt 1 of 2
+[2025-12-01T13:05:55.948+0000] {taskinstance.py:2217} INFO - Executing <Task(PythonOperator): generate_email_report> on 2025-12-01 12:54:55+00:00
+[2025-12-01T13:05:55.962+0000] {standard_task_runner.py:60} INFO - Started process 984 to run task
+[2025-12-01T13:05:55.970+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'daily_user_segmentation', 'generate_email_report', 'manual__2025-12-01T12:54:55+00:00', '--job-id', '29', '--raw', '--subdir', 'DAGS_FOLDER/daily_user_segmentation_dag.py', '--cfg-path', '/tmp/tmpq9_75fpw']
+[2025-12-01T13:05:55.982+0000] {standard_task_runner.py:88} INFO - Job 29: Subtask generate_email_report
+[2025-12-01T13:05:56.126+0000] {task_command.py:423} INFO - Running <TaskInstance: daily_user_segmentation.generate_email_report manual__2025-12-01T12:54:55+00:00 [running]> on host d4a7043b2403
+[2025-12-01T13:05:56.271+0000] {taskinstance.py:2513} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='daily_user_segmentation' AIRFLOW_CTX_TASK_ID='generate_email_report' AIRFLOW_CTX_EXECUTION_DATE='2025-12-01T12:54:55+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-01T12:54:55+00:00'
+[2025-12-01T13:05:56.274+0000] {logging_mixin.py:188} INFO - ================================================================================
+[2025-12-01T13:05:56.275+0000] {logging_mixin.py:188} INFO - 📧 TASK 4: Generating Email Report
+[2025-12-01T13:05:56.276+0000] {logging_mixin.py:188} INFO - ================================================================================
+[2025-12-01T13:05:56.294+0000] {logging_mixin.py:188} INFO - 
+================================================================================
+📊 DAILY USER SEGMENTATION REPORT
+================================================================================
+
+Analysis Date: 2025-12-01
+Generated: 2025-12-01 13:05:56
+
+================================================================================
+SUMMARY STATISTICS
+================================================================================
+
+Total Users Analyzed:        100
+Buyers (Made Purchase):      70 (70.0%)
+Window Shoppers (No Buy):    30 (30.00%)
+
+================================================================================
+KEY INSIGHTS
+================================================================================
+
+✅ Buyer Conversion Rate: 70.0%
+⚠️  30 users browsed but didn't purchase
+💡 Recommendation: Target window shoppers with personalized offers
+
+================================================================================
+NEXT STEPS
+================================================================================
+
+1. Send retargeting emails to window shoppers
+2. Analyze which products had high views but low conversions
+3. Consider flash sales for high-interest, low-purchase products
+
+================================================================================
+        
+[2025-12-01T13:05:56.304+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.8/site-packages/***/utils/context.py:315 AirflowContextDeprecationWarning: Accessing 'execution_date' from the template is deprecated and will be removed in a future version. Please use 'data_interval_start' or 'logical_date' instead.
+[2025-12-01T13:05:56.305+0000] {logging_mixin.py:188} INFO - 
+✅ Report generated successfully
+[2025-12-01T13:05:56.306+0000] {logging_mixin.py:188} INFO - 📁 Report would be saved to: /tmp/user_segmentation_report_20251201.txt
+[2025-12-01T13:05:56.308+0000] {python.py:202} INFO - Done. Returned value was: Report generated successfully
+[2025-12-01T13:05:56.346+0000] {taskinstance.py:1149} INFO - Marking task as SUCCESS. dag_id=daily_user_segmentation, task_id=generate_email_report, execution_date=20251201T125455, start_date=20251201T130555, end_date=20251201T130556
+[2025-12-01T13:05:56.396+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-12-01T13:05:56.420+0000] {taskinstance.py:3312} INFO - 0 downstream tasks scheduled from follow-on schedule check

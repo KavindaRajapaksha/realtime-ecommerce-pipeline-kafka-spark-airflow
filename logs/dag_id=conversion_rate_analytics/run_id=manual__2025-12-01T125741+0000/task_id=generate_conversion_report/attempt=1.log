@@ -1,0 +1,134 @@
+[2025-12-01T13:00:08.770+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: conversion_rate_analytics.generate_conversion_report manual__2025-12-01T12:57:41+00:00 [queued]>
+[2025-12-01T13:00:08.785+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: conversion_rate_analytics.generate_conversion_report manual__2025-12-01T12:57:41+00:00 [queued]>
+[2025-12-01T13:00:08.786+0000] {taskinstance.py:2193} INFO - Starting attempt 1 of 2
+[2025-12-01T13:00:08.806+0000] {taskinstance.py:2217} INFO - Executing <Task(PythonOperator): generate_conversion_report> on 2025-12-01 12:57:41+00:00
+[2025-12-01T13:00:08.818+0000] {standard_task_runner.py:60} INFO - Started process 723 to run task
+[2025-12-01T13:00:08.828+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'conversion_rate_analytics', 'generate_conversion_report', 'manual__2025-12-01T12:57:41+00:00', '--job-id', '14', '--raw', '--subdir', 'DAGS_FOLDER/conversion_rate_analytics_dag.py', '--cfg-path', '/tmp/tmpsnz9e365']
+[2025-12-01T13:00:08.835+0000] {standard_task_runner.py:88} INFO - Job 14: Subtask generate_conversion_report
+[2025-12-01T13:00:08.979+0000] {task_command.py:423} INFO - Running <TaskInstance: conversion_rate_analytics.generate_conversion_report manual__2025-12-01T12:57:41+00:00 [running]> on host d4a7043b2403
+[2025-12-01T13:00:09.143+0000] {taskinstance.py:2513} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='conversion_rate_analytics' AIRFLOW_CTX_TASK_ID='generate_conversion_report' AIRFLOW_CTX_EXECUTION_DATE='2025-12-01T12:57:41+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-01T12:57:41+00:00'
+[2025-12-01T13:00:09.146+0000] {logging_mixin.py:188} INFO - ================================================================================
+[2025-12-01T13:00:09.146+0000] {logging_mixin.py:188} INFO - 📧 TASK 4: Generating Conversion Rate Report
+[2025-12-01T13:00:09.148+0000] {logging_mixin.py:188} INFO - ================================================================================
+[2025-12-01T13:00:09.225+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.8/site-packages/***/utils/context.py:315 AirflowContextDeprecationWarning: Accessing 'execution_date' from the template is deprecated and will be removed in a future version. Please use 'data_interval_start' or 'logical_date' instead.
+[2025-12-01T13:00:09.232+0000] {logging_mixin.py:188} INFO - 
+================================================================================
+📊 CONVERSION RATE ANALYTICS REPORT
+================================================================================
+
+Analysis Date: 2025-12-01
+Generated: 2025-12-01 13:00:09
+
+================================================================================
+OVERALL METRICS
+================================================================================
+
+Total Views:              2,248
+Total Purchases:          240
+Overall Conversion Rate:  10.68%
+
+Best Category:            Sports (17.33%)
+Worst Category:           Electronics (4.83%)
+
+================================================================================
+CONVERSION RATES BY CATEGORY
+================================================================================
+
+
+📦 Sports
+--------------------------------------------------------------------------------
+Views:                    277
+Add to Cart:              86
+Purchases:                48
+Conversion Rate:          17.33%
+Cart Rate:                31.05%
+Purchase from Cart:       55.81%
+
+
+📦 Books
+--------------------------------------------------------------------------------
+Views:                    220
+Add to Cart:              63
+Purchases:                38
+Conversion Rate:          17.27%
+Cart Rate:                28.64%
+Purchase from Cart:       60.32%
+
+
+📦 Home & Garden
+--------------------------------------------------------------------------------
+Views:                    348
+Add to Cart:              105
+Purchases:                57
+Conversion Rate:          16.38%
+Cart Rate:                30.17%
+Purchase from Cart:       54.29%
+
+
+📦 Clothing
+--------------------------------------------------------------------------------
+Views:                    450
+Add to Cart:              118
+Purchases:                51
+Conversion Rate:          11.33%
+Cart Rate:                26.22%
+Purchase from Cart:       43.22%
+
+
+📦 Electronics
+--------------------------------------------------------------------------------
+Views:                    953
+Add to Cart:              140
+Purchases:                46
+Conversion Rate:          4.83%
+Cart Rate:                14.69%
+Purchase from Cart:       32.86%
+
+
+================================================================================
+🏆 TOP 5 PRODUCTS (Highest Conversion)
+================================================================================
+
+  prod_0009 (Home & Garden): 50.0% (6/12)
+  prod_0046 (Sports): 40.0% (6/15)
+  prod_0010 (Clothing): 38.46% (5/13)
+  prod_0040 (Home & Garden): 38.46% (5/13)
+  prod_0022 (Home & Garden): 33.33% (4/12)
+
+================================================================================
+⚠️  BOTTOM 5 PRODUCTS (Lowest Conversion - Needs Attention)
+================================================================================
+
+  prod_0005 (Electronics): 0.0% (0/16)
+  prod_0006 (Clothing): 0.0% (0/17)
+  prod_0007 (Electronics): 0.0% (0/16)
+  prod_0012 (Electronics): 0.0% (0/15)
+  prod_0028 (Electronics): 0.0% (0/18)
+
+================================================================================
+KEY INSIGHTS & RECOMMENDATIONS
+================================================================================
+
+✅ Strong Performance:
+   • Sports category shows highest conversion (17.33%)
+   • Focus marketing efforts on successful products
+   
+⚠️  Needs Improvement:
+   • Electronics category needs optimization (4.83%)
+   • Review pricing, product descriptions, and images for low-converting items
+   
+💡 Action Items:
+   1. Investigate why bottom 5 products have low conversion
+   2. A/B test different pricing strategies for underperforming categories
+   3. Consider flash sales for high-view, low-purchase products
+   4. Optimize product pages for categories below 10.68% conversion
+
+================================================================================
+        
+[2025-12-01T13:00:09.233+0000] {logging_mixin.py:188} INFO - 
+✅ Report generated successfully
+[2025-12-01T13:00:09.234+0000] {logging_mixin.py:188} INFO - 📁 Report would be saved to: /tmp/conversion_rate_report_20251201.txt
+[2025-12-01T13:00:09.235+0000] {python.py:202} INFO - Done. Returned value was: Report generated successfully
+[2025-12-01T13:00:09.274+0000] {taskinstance.py:1149} INFO - Marking task as SUCCESS. dag_id=conversion_rate_analytics, task_id=generate_conversion_report, execution_date=20251201T125741, start_date=20251201T130008, end_date=20251201T130009
+[2025-12-01T13:00:09.325+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-12-01T13:00:09.350+0000] {taskinstance.py:3312} INFO - 0 downstream tasks scheduled from follow-on schedule check

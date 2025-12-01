@@ -1,0 +1,36 @@
+[2025-12-01T13:17:27.950+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: conversion_rate_analytics.extract_all_events manual__2025-12-01T13:17:25.997988+00:00 [queued]>
+[2025-12-01T13:17:27.965+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: conversion_rate_analytics.extract_all_events manual__2025-12-01T13:17:25.997988+00:00 [queued]>
+[2025-12-01T13:17:27.966+0000] {taskinstance.py:2193} INFO - Starting attempt 1 of 2
+[2025-12-01T13:17:27.992+0000] {taskinstance.py:2217} INFO - Executing <Task(PythonOperator): extract_all_events> on 2025-12-01 13:17:25.997988+00:00
+[2025-12-01T13:17:28.002+0000] {standard_task_runner.py:60} INFO - Started process 1505 to run task
+[2025-12-01T13:17:28.011+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'conversion_rate_analytics', 'extract_all_events', 'manual__2025-12-01T13:17:25.997988+00:00', '--job-id', '42', '--raw', '--subdir', 'DAGS_FOLDER/conversion_rate_analytics_dag.py', '--cfg-path', '/tmp/tmpq72jj5zv']
+[2025-12-01T13:17:28.016+0000] {standard_task_runner.py:88} INFO - Job 42: Subtask extract_all_events
+[2025-12-01T13:17:28.135+0000] {task_command.py:423} INFO - Running <TaskInstance: conversion_rate_analytics.extract_all_events manual__2025-12-01T13:17:25.997988+00:00 [running]> on host d4a7043b2403
+[2025-12-01T13:17:28.259+0000] {taskinstance.py:2513} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='conversion_rate_analytics' AIRFLOW_CTX_TASK_ID='extract_all_events' AIRFLOW_CTX_EXECUTION_DATE='2025-12-01T13:17:25.997988+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-12-01T13:17:25.997988+00:00'
+[2025-12-01T13:17:28.262+0000] {logging_mixin.py:188} INFO - ================================================================================
+[2025-12-01T13:17:28.263+0000] {logging_mixin.py:188} INFO - 📊 TASK 1: Extracting All Clickstream Events
+[2025-12-01T13:17:28.264+0000] {logging_mixin.py:188} INFO - ================================================================================
+[2025-12-01T13:17:28.273+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.8/site-packages/***/utils/context.py:315 AirflowContextDeprecationWarning: Accessing 'execution_date' from the template is deprecated and will be removed in a future version. Please use 'data_interval_start' or 'logical_date' instead.
+[2025-12-01T13:17:28.445+0000] {logging_mixin.py:188} INFO - 
+✅ Extracted 3000 total events
+[2025-12-01T13:17:28.446+0000] {logging_mixin.py:188} INFO - 📅 Date: 2025-12-01
+[2025-12-01T13:17:28.447+0000] {logging_mixin.py:188} INFO - 
+Event Type Distribution:
+[2025-12-01T13:17:28.455+0000] {logging_mixin.py:188} INFO - event_type
+view           2256
+add_to_cart     489
+purchase        255
+Name: count, dtype: int64
+[2025-12-01T13:17:28.456+0000] {logging_mixin.py:188} INFO - 
+Category Distribution:
+[2025-12-01T13:17:28.458+0000] {logging_mixin.py:188} INFO - product_category
+Electronics      1128
+Clothing          671
+Home & Garden     523
+Sports            366
+Books             312
+Name: count, dtype: int64
+[2025-12-01T13:17:28.533+0000] {python.py:202} INFO - Done. Returned value was: Extracted 3000 events
+[2025-12-01T13:17:28.566+0000] {taskinstance.py:1149} INFO - Marking task as SUCCESS. dag_id=conversion_rate_analytics, task_id=extract_all_events, execution_date=20251201T131725, start_date=20251201T131727, end_date=20251201T131728
+[2025-12-01T13:17:28.627+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-12-01T13:17:28.684+0000] {taskinstance.py:3312} INFO - 1 downstream tasks scheduled from follow-on schedule check

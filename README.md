@@ -1,135 +1,153 @@
 # Real-Time E-Commerce Clickstream Analytics Pipeline
 
-Real-time data pipeline using Kafka, Spark Structured Streaming, and Airflow to process e-commerce clickstream data with Bronze-Silver-Gold architecture.
+A comprehensive big data pipeline implementing **Kappa Architecture** for real-time stream processing and **Apache Airflow** for batch analytics orchestration, processing e-commerce clickstream events to generate flash sale alerts and daily analytical reports.
 
-## 🏗️ Architecture
+## Architecture Overview
 
-**Bronze Layer** → Raw events in Kafka ✅  
-**Silver Layer** → Cleaned Parquet files with Spark ✅  
-**Gold Layer** → Aggregated metrics (Planned)
-
+### Real-Time Layer (Kappa Architecture)
 ```
-Producer (5 events/sec) → Kafka (3 partitions) → Spark Streaming → Parquet Files
-                           [Bronze Layer]         [Transformation]   [Silver Layer]
+Producer → Kafka → Spark Streaming → PostgreSQL
+(Events)   (Buffer)  (Aggregation)    (Alerts)
 ```
 
+### Batch Analytics Layer
+```
+Airflow DAGs → Scheduled Analytics → Reports
+(Orchestration)  (Daily Processing)   (Insights)
+```
 
+## Features
 
-## 🚀 Quick Start
+### Real-Time Processing
+- **Flash Sale Detection**: Identifies high-view, low-conversion products (>100 views, <5 purchases) for immediate marketing action using 10-minute sliding windows
 
-### Setup & Run
+### Batch Analytics (Airflow DAGs)
+- **User Segmentation (daily_user_segmentation)**: Categorizes users into Window Shoppers vs Buyers, scheduled daily at 1:00 AM
+- **Top Products Report (top_products_daily_report)**: Ranks top 5 most-viewed products with engagement metrics, scheduled daily at 2:00 AM
+- **Conversion Rate Analytics (conversion_rate_analytics)**: Calculates category-level purchase conversion rates and identifies best/worst performers, scheduled daily at 3:00 AM
 
-```cmd
-# 1. Start services
+### Orchestration
+- **Automated Scheduling**: All DAGs run automatically via Airflow scheduler
+- **Task Dependencies**: Extract → Transform → Save + Report generation in parallel
+- **Error Handling**: Retry logic and failure notifications
+
+## Quick Start
+
+### 1. Start Infrastructure
+```bash
 docker-compose up -d
+```
 
-# 2. Create Kafka topic
-docker exec -it kafka kafka-topics --create --topic ecom_clickstream_raw --bootstrap-server localhost:9092 --partitions 3 --replication-factor 1
+### 2. Create Kafka Topic
+```bash
+docker exec -it kafka kafka-topics --create --topic ecom_clickstream_data --bootstrap-server localhost:9092 --partitions 3 --replication-factor 1
+```
 
-# 3. Start producer (Terminal 1)
+### 3. Start Real-Time Pipeline
+```bash
+# Terminal 1: Producer
 python ecom_producer.py
 
-# 4. Start Spark job (Terminal 2)
-submit_spark_job.bat
+# Terminal 2: Spark Streaming
+scripts\submit_spark_kappa.bat
 ```
 
-### Verify
-
-```cmd
-# Check Spark Master
-http://localhost:8080
-
-# Check Application UI
-http://localhost:4040
-
-# View Silver layer files
-docker exec spark-master ls -R /tmp/silver_layer/
+### 4. Trigger Batch Analytics
+```bash
+scripts\trigger_airflow_dags.bat
 ```
 
+### 5. Verify Status
+```bash
+scripts\check_dags_status.bat
+```
 
-
-## 📊 Data Flow
-
-**Producer** (`ecom_producer.py`) → **Kafka** (`ecom_clickstream_raw`) → **Spark Streaming** → **Parquet Files** (`/tmp/silver_layer/`)
-
-### Transformations
-- Parse JSON from Kafka
-- Filter nulls and invalid prices
-- Deduplicate by event_id
-- Add `is_high_value` flag (price > $500)
-- Extract `event_date` and `event_hour`
-- Partition by date and event_type
-
-## 🌐 Web Interfaces
-
-| Service | URL | Description |
-|---------|-----|-------------|
-| Spark Master | http://localhost:8080 | Cluster status & applications |
-| Spark App | http://localhost:4040 | Streaming metrics (when job running) |
-| Airflow | http://localhost:8087 | Workflow UI (planned) |
-
-## 📂 Project Structure
+## Project Structure
 
 ```
 Final Project/
-├── docker-compose.yml          # 8 services: Zookeeper, Kafka, PostgreSQL, Airflow (3), Spark (2)
-├── ecom_producer.py            # Kafka producer (5 events/sec, 60s)
-├── spark_streaming_silver.py   # Spark job (Bronze → Silver)
-├── submit_spark_job.bat        # Windows script to submit Spark job
-├── verify_silver_layer.py      # Verification script
-└── README.md
+├── docker-compose.yml          # Infrastructure: Kafka, Spark, Airflow, PostgreSQL
+├── ecom_producer.py            # Kafka event producer (5 events/sec)
+├── spark_streaming_kappa.py    # Real-time stream processing job
+├── dags/                       # Airflow DAG definitions
+│   ├── daily_user_segmentation_dag.py
+│   ├── top_products_daily_dag.py
+│   └── conversion_rate_analytics_dag.py
+├── scripts/                    # Automation scripts
+│   ├── submit_spark_kappa.bat
+│   ├── trigger_airflow_dags.bat
+│   ├── verify_analytics.bat
+│   └── check_dags_status.bat
+└── docs/                       # Documentation
+    ├── ORCHESTRATION_GUIDE.md
+    ├── COMPLETE_RUN_SEQUENCE.md
+    └── RUN_GUIDE.md
 ```
 
-## 🛠️ Technologies
+## Technology Stack
 
-| Technology | Version | Purpose |
-|------------|---------|---------|
-| Apache Kafka | 7.4.1 | Event streaming |
-| Apache Spark | 3.5.0 | Stream processing |
-| Apache Airflow | 2.8.3 | Orchestration (planned) |
-| Docker | Latest | Containerization |
-| Python | 3.8+ | Producer & scripts |
+| Component | Technology | Version | Purpose |
+|-----------|-----------|---------|---------|
+| Stream Processing | Apache Spark | 3.5.0 | Real-time aggregations |
+| Message Broker | Apache Kafka | 7.4.1 | Event streaming |
+| Orchestration | Apache Airflow | 2.8.3 | Batch job scheduling |
+| Database | PostgreSQL | 13 | Data persistence |
+| Containerization | Docker Compose | - | Service deployment |
 
-## 🔧 Configuration
+## Key Metrics
 
-### Kafka
-- **Topic**: `ecom_clickstream_raw`
-- **Partitions**: 3
-- **Bootstrap**: `localhost:9092`
-- **Format**: JSON
+### Real-Time Alerts
+- **Trigger Condition**: Views > 100 AND Purchases < 5
+- **Window**: 10-minute sliding windows (1-minute slide)
+- **Output**: `flash_sale_alerts` table
 
-### Spark Streaming
-- **Trigger Interval**: 20 seconds
-- **Checkpoint**: `/tmp/spark-checkpoints/silver`
-- **Output Format**: Parquet (Snappy)
-- **Partitioning**: `event_date`, `event_type`
+### Batch Analytics DAGs (Daily Schedule)
 
-## 🚨 Troubleshooting
+| DAG | Schedule | Tasks | Output |
+|-----|----------|-------|--------|
+| `daily_user_segmentation` | 1:00 AM | Extract events → Segment users → Save + Email report | User categories with purchase behavior |
+| `top_products_daily_report` | 2:00 AM | Extract views → Calculate rankings → Save + Format report | Top 5 products with engagement metrics |
+| `conversion_rate_analytics` | 3:00 AM | Extract all events → Calculate rates → Save + Analysis report | Category conversion rates & trends |
 
-**Kafka connection failed?**
-```cmd
-docker-compose restart kafka
-docker exec -it kafka kafka-broker-api-versions --bootstrap-server localhost:9092
+## Access Points
+
+| Service | URL | Credentials |
+|---------|-----|-------------|
+| Airflow UI | http://localhost:8087 | admin / admin |
+| Spark Master | http://localhost:8080 | - |
+| Spark Application | http://localhost:4040 | - |
+
+## Verification
+
+### Check Real-Time Alerts
+```bash
+docker exec -it postgres psql -U airflow -d airflow -c "SELECT * FROM flash_sale_alerts ORDER BY alert_timestamp DESC LIMIT 10;"
 ```
 
-**Spark UI (4040) not accessible?**
-- Only available when job is running
-- Check Spark Master UI (8080) for application status
+### View Batch Reports
+1. Open Airflow UI (http://localhost:8087)
+2. Click on DAG → Latest Run
+3. Click task → Logs to view reports
 
-**No data in Silver layer?**
-```cmd
-docker exec -it kafka kafka-console-consumer --topic ecom_clickstream_raw --bootstrap-server localhost:9092 --max-messages 5
-docker logs spark-master
+### System Health Check
+```bash
+scripts\check_dags_status.bat
 ```
 
-## 🔮 Next Steps
+## Documentation
 
-### Phase 4: Gold Layer (Planned)
-- Conversion rate analytics
-- High-interest, low-conversion detection
-- Time-windowed aggregations
+- **`docs/ORCHESTRATION_GUIDE.md`**: Complete Airflow implementation guide
+- **`docs/COMPLETE_RUN_SEQUENCE.md`**: Step-by-step execution workflow
+- **`docs/RUN_GUIDE.md`**: Detailed operational procedures
 
-### Phase 5: Airflow DAGs (Planned)
-- Automated workflows
-- Scheduling & monitoring
-- Alerting
+## Requirements
+
+- Docker Desktop (Windows)
+- Python 3.8+
+- 8GB RAM minimum
+- Ports: 8080, 8087, 9092, 5432, 4040
+
+## Author
+
+Applied Big Data Engineering Mini Project  
+Scenario 3: E-Commerce Clickstream Analytics
